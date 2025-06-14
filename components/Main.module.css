@@ -1,7 +1,7 @@
 .mainBody {
     background-color: #f5f1dd;
-    min-height: calc(100vh - 50px);
-    padding: 2rem 9rem;
+    height: calc(100vh - 5rem);
+    padding: 2rem 9rem 1rem 9rem;
 }
 
 .pathText {

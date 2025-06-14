@@ -1,0 +1,129 @@
+.wrapper {
+    background-color: #f5f1dd;
+    min-height: calc(93vh - 10rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.window {
+    width: 250px;
+    background-color: #f5f1dd;
+    border: 1px solid #7a5c3e;
+    border-radius: 8px;
+
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    background-color: #F79B72;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+    border-bottom: 1px solid #7a5c3e;
+    padding: 0.8rem 1.3rem;
+}
+
+.title {
+    color: #7a5c3e;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+.circles {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.red,
+.green,
+.blue {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.red {
+    background-color: #f87171;
+}
+
+.blue {
+    background-color: #1593fa;
+}
+
+.green {
+    background-color: #4ade80;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #7a5c3e;
+    margin-bottom: 1.2rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.inputGroup label {
+    margin-bottom: 0.2rem;
+    color: #7a5c3e;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.inputGroup input {
+    padding: 0.5rem;
+    border: 1px solid #7a5c3e;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    background-color: white;
+}
+
+.buttonRow {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.registerBtn {
+    background-color: #4ade80;
+    color: #7a5c3e;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    min-width: 8rem;
+    height: 3rem;
+}
+
+.loginBtn {
+    background-color: #fbbf24;
+    color: #7a5c3e;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    min-width: 8rem;
+    height: 3rem;
+
+}
