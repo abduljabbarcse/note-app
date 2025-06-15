@@ -8,6 +8,7 @@ import { loginUser, registerUser } from '@/lib/features/authThunks';
 import { validateForm } from '@/lib/validation';
 import { resetForm, setFormField } from '@/lib/features/authSlice';
 import { AuthFormProps, FormState } from '@/types/userTypes';
+import { motion } from 'framer-motion';
 
 
 
@@ -81,7 +82,13 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.window}>
+            <motion.div
+                className={styles.window}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
+
                 <div className={styles.topbar}>
                     <span className={`font-sour-gummy ${styles.title}`}>{isSignup ? 'Signup' : 'Login'}</span>
                     <div className={styles.circles}>
@@ -90,7 +97,14 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
                         <span className={styles.red}></span>
                     </div>
                 </div>
-                <h2 className={`font-sour-gummy ${styles.heading}`}>{isSignup ? 'Sign up' : 'Login'}</h2>
+                <motion.h2
+                    className={`font-sour-gummy ${styles.heading}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                >
+                    {isSignup ? 'Sign up' : 'Login'}
+                </motion.h2>
                 {error && <div className={styles.error}>{error}</div>}
                 <form onSubmit={handleSubmit} className={styles.form}>
                     {isSignup && (
@@ -141,26 +155,35 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
                             {errors.confirmPassword && <span className={styles.errorText}>{errors.confirmPassword}</span>}
                         </div>
                     )}
-                    <div className={styles.buttonRow}>
-                        <button
+                    <motion.div
+                        className={styles.buttonRow}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4, duration: 0.5 }}
+                    >
+                        <motion.button
                             type="submit"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                             className={`font-sour-gummy ${isSignup ? styles.registerBtn : styles.loginBtn}`}
                             disabled={loading}
                         >
                             {loading ? 'Processing...' : isSignup ? 'Register' : 'Login'}
-                        </button>
-                        <button
+                        </motion.button>
+                        <motion.button
                             type="button"
                             onClick={handleSwitch}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                             className={`font-sour-gummy ${isSignup ? styles.loginBtn : styles.registerLogBtn}`}
                             disabled={loading}
                         >
                             {isSignup ? 'Login' : 'Register'}
-                        </button>
-                    </div>
+                        </motion.button>
+                    </motion.div>
                 </form>
-            </div>
-        </div>
+            </motion.div>
+        </div >
     );
 };
 
