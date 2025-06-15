@@ -11,9 +11,17 @@ export function addNote(note: Note) {
     notes.push(note);
 }
 
-export function updateNote(id: string, data: Partial<Note>) {
-    const index = notes.findIndex(n => n.id === id);
-    if (index !== -1) notes[index] = { ...notes[index], ...data };
+export function updateNote(id: string, updates: Partial<Note>): Note | null {
+    const index = notes.findIndex(note => note.id === id);
+    if (index === -1) return null;
+
+    notes[index] = {
+        ...notes[index],
+        ...updates,
+        updatedAt: new Date().toISOString(), // always update timestamp
+    };
+
+    return notes[index]; // return the updated note
 }
 
 export function deleteNote(id: string) {

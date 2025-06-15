@@ -7,7 +7,6 @@ import StoreProvider from "./StoreProvider";
 import styles from './page.module.css';
 import Greeting from "@/components/MainComponents/Greeting";
 import InitAuth from "./InitAuth";
-import FloatingNotesButton from "@/components/MainComponents/FloatingButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +30,6 @@ export default function RootLayout({
               <Greeting />
               <InitAuth />
               {children}
-              <FloatingNotesButton />
             </main>
           </Main>
         </StoreProvider>

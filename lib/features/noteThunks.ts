@@ -29,7 +29,7 @@ export const createNoteAsync = createAsyncThunk(
 export const updateNoteAsync = createAsyncThunk(
     'notes/updateNote',
     async (note: UpdateNoteDto) => {
-        const response = await axios.patch<Note>(`${API_URL}/${note.id}`, note, {
+        const response = await axios.put<Note>(`${API_URL}`, note, {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true,
         });
@@ -40,7 +40,8 @@ export const updateNoteAsync = createAsyncThunk(
 export const deleteNoteAsync = createAsyncThunk(
     'notes/deleteNote',
     async (noteId: string) => {
-        await axios.delete(`${API_URL}/${noteId}`, {
+        await axios.delete(`${API_URL}`, {
+            data: { id: noteId },
             withCredentials: true,
         });
         return noteId;

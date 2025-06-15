@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { loginSuccess, loginFailure, registerSuccess, registerFailure, logout } from './authSlice';
 import { LoginCredentials, RegisterCredentials } from '@/types/userTypes';
 
@@ -14,13 +14,11 @@ export const loginUser = createAsyncThunk(
 
       dispatch(loginSuccess(user));
       return user;
-    } catch (error) {
-      if (error instanceof Error) {
-        dispatch(loginFailure(error.message));
-      } else {
-        dispatch(loginFailure('An unknown error occurred'));
-      }
-      throw error;
+    } catch (err) {
+      const error = err as AxiosError;
+      const message = error.response?.data?.error || error.message || 'An unknown error occurred';
+      dispatch(loginFailure(message));
+      throw new Error(message);
     }
   }
 );
@@ -35,13 +33,11 @@ export const registerUser = createAsyncThunk(
 
       dispatch(registerSuccess(user));
       return user;
-    } catch (error) {
-      if (error instanceof Error) {
-        dispatch(registerFailure(error.message));
-      } else {
-        dispatch(registerFailure('An unknown error occurred'));
-      }
-      throw error;
+    } catch (err) {
+      const error = err as AxiosError;
+      const message = error.response?.data?.error || error.message || 'An unknown error occurred';
+      dispatch(registerFailure(message));
+      throw new Error(message);
     }
   }
 );
@@ -56,7 +52,7 @@ export const logoutUser = createAsyncThunk(
         throw new Error('Logout failed');
       }
 
-      dispatch(logout()); 
+      dispatch(logout());
     } catch (error) {
       console.error('Logout error:', error);
       throw error;

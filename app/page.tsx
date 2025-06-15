@@ -1,9 +1,11 @@
-'use client';
+"use client"
+
+import FloatingNotesButton from '@/components/MainComponents/FloatingButton';
+import NoteModal from '@/components/NotesComponents/NoteModal';
 import NotesList from '@/components/NotesComponents/NotesList';
 import { fetchNotesAsync } from '@/lib/features/noteThunks';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import React, { useEffect } from 'react';
-
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -19,6 +21,8 @@ export default function Home() {
   return (
     <main>
       <NotesList notes={notes} />
+      <FloatingNotesButton />
+      <NoteModal />
     </main>
   );
 }

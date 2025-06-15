@@ -27,11 +27,15 @@ export async function POST(req: Request) {
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await req.json();
+  const now = new Date().toISOString();
+
   const newNote = {
     id: uuidv4(),
     title: body.title,
     content: body.content,
     userId: user.id,
+    createdAt: now,
+    updatedAt: now,
   };
 
   addNote(newNote);
@@ -45,8 +49,13 @@ export async function PUT(req: Request) {
   const body = await req.json();
   const { id, title, content } = body;
 
-  updateNote(id, { title, content });
-  return NextResponse.json({ success: true });
+  const updatedNote = updateNote(id, {
+    title,
+    content,
+    updatedAt: new Date().toISOString(),
+  });
+
+  return NextResponse.json(updatedNote);
 }
 
 export async function DELETE(req: Request) {

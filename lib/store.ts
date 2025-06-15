@@ -1,13 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './features/authSlice';
 import notesReducer from './features/notesSlice';
-
+import modalReducer from './features/modalSlice';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       auth: authReducer,
-      notes: notesReducer
+      notes: notesReducer,
+      modal: modalReducer
     },
   });
 };

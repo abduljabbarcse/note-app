@@ -76,8 +76,33 @@
   font-size: 1.2rem;
   color: #333;
   flex: 1;
+  overflow: hidden;
+  overflow-y: auto;
+  word-break: break-word;
+  line-height: 1.4;
+}
+.noteBody::-webkit-scrollbar {
+  width: 0.6rem;
 }
 
+.noteBody::-webkit-scrollbar-track {
+  background: #f5f1dd;
+}
+
+.noteBody::-webkit-scrollbar-thumb {
+  background: #caa776;
+  border-radius: 0.3rem;
+}
+
+.noteBody::-webkit-scrollbar-thumb:hover {
+  background: #a07850;
+}
+
+/* Firefox scrollbar */
+.noteBody {
+  scrollbar-width: thin;
+  scrollbar-color: #caa776 #f5f1dd;
+}
 .noteFooter {
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
