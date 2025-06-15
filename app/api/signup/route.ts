@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   const { username, email, password, confirmPassword } = await req.json();
 
   if (!username || !email || !password || password !== confirmPassword) {
-    return NextResponse.json({ error:   'Invalid input' }, { status: 400 });
+    return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
   }
 
   if (findUserByEmail(email)) {
@@ -18,6 +18,5 @@ export async function POST(req: Request) {
   addUser({ id, username, email, password });
 
   const res = NextResponse.json({ success: true, user: { id, username, email } });
-  res.cookies.set('auth', JSON.stringify({ id, username, email }), { httpOnly: false });
   return res;
 }

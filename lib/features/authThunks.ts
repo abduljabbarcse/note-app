@@ -1,6 +1,6 @@
 // features/auth/authThunks.ts
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { loginSuccess, loginFailure, registerSuccess, registerFailure } from './authSlice';
+import { loginSuccess, loginFailure, registerSuccess, registerFailure, logout } from './authSlice';
 import { LoginCredentials, RegisterCredentials } from '@/types/userTypes';
 
 
@@ -62,6 +62,25 @@ export const registerUser = createAsyncThunk(
       } else {
         dispatch(registerFailure('An unknown error occurred'));
       }
+      throw error;
+    }
+  }
+);
+export const logoutUser = createAsyncThunk(
+  'api/logout',
+  async (_, { dispatch }) => {
+    try {
+      const res = await fetch('/api/logout', {
+        method: 'POST',
+      });
+
+      if (!res.ok) {
+        throw new Error('Logout failed');
+      }
+
+      dispatch(logout()); // Reset auth state
+    } catch (error) {
+      console.error('Logout error:', error);
       throw error;
     }
   }

@@ -152,7 +152,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
                         <button
                             type="button"
                             onClick={handleSwitch}
-                            className={`font-sour-gummy ${isSignup ? styles.loginBtn : styles.registerBtn}`}
+                            className={`font-sour-gummy ${isSignup ? styles.loginBtn : styles.registerLogBtn}`}
                             disabled={loading}
                         >
                             {isSignup ? 'Login' : 'Register'}

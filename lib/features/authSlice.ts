@@ -41,10 +41,8 @@ const authSlice = createSlice({
         },
         registerSuccess(state, action: PayloadAction<User>) {
             state.user = action.payload;
-            state.isAuthenticated = true;
             state.loading = false;
             state.error = null;
-            localStorage.setItem('user', JSON.stringify(action.payload));
             console.log("sucess")
         },
         registerFailure(state, action: PayloadAction<string>) {

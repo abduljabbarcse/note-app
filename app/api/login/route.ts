@@ -11,6 +11,6 @@ export async function POST(req: Request) {
   }
 
   const res = NextResponse.json({ success: true, user: { id: user.id, username: user.username, email } });
-  res.cookies.set('auth', JSON.stringify({ id: user.id, username: user.username, email }), { httpOnly: false });
+  res.cookies.set('auth', JSON.stringify({ id: user.id, username: user.username, email }), { httpOnly: true, path: '/' });
   return res;
 }

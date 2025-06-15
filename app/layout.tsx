@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Main from "@/components/Main";
+import Header from "@/components/HeaderComponents/Header";
+import Main from "@/components/MainComponents/Main";
 import StoreProvider from "./StoreProvider";
+import { StickyNote } from "lucide-react";
+import styles from './page.module.css';
+import Greeting from "@/components/MainComponents/Greeting";
+import InitAuth from "./InitAuth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +27,15 @@ export default function RootLayout({
         <StoreProvider>
           <Header />
           <Main>
-            {children}
+            <main className={`font-sour-gummy ${styles.page}`}>
+              <Greeting />
+              <InitAuth/>
+              {children}
+              <button className={styles.floatingButton} title="Open Notes">
+                <StickyNote className={styles.icon} />
+              </button>
+            </main>
+
           </Main>
         </StoreProvider>
       </body>

@@ -135,6 +135,18 @@
 
 }
 
+.registerLogBtn {
+    background-color: #a3d3d8;
+    color: #004d5a;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    min-width: 8rem;
+    height: 3rem;
+}
+
 .errorInput {
     border-color: #dc3545 !important;
 }

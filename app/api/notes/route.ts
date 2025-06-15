@@ -2,34 +2,36 @@ import { NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
 import { addNote, getUserNotes, updateNote, deleteNote } from '@/lib/notes';
 
-
-export async function GET(req: Request) {
-    
+function getUserFromRequest(req: Request) {
   const cookie = req.headers.get('cookie') || '';
   const match = cookie.match(/auth=([^;]+)/);
-  if (!match) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!match) return null;
 
-  const user = JSON.parse(decodeURIComponent(match[1]));
-  const userId = user?.id;
-  const notes = getUserNotes(userId);
+  try {
+    return JSON.parse(decodeURIComponent(match[1]));
+  } catch {
+    return null;
+  }
+}
 
+export async function GET(req: Request) {
+  const user = getUserFromRequest(req);
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+  const notes = getUserNotes(user.id);
   return NextResponse.json(notes);
 }
 
 export async function POST(req: Request) {
+  const user = getUserFromRequest(req);
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
   const body = await req.json();
-  const cookie = req.headers.get('cookie') || '';
-  const match = cookie.match(/auth=([^;]+)/);
-  if (!match) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-
-  const user = JSON.parse(decodeURIComponent(match[1]));
-  const userId = user?.id;
-
   const newNote = {
     id: uuidv4(),
     title: body.title,
     content: body.content,
-    userId,
+    userId: user.id,
   };
 
   addNote(newNote);
@@ -37,6 +39,9 @@ export async function POST(req: Request) {
 }
 
 export async function PUT(req: Request) {
+  const user = getUserFromRequest(req);
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
   const body = await req.json();
   const { id, title, content } = body;
 
@@ -45,6 +50,9 @@ export async function PUT(req: Request) {
 }
 
 export async function DELETE(req: Request) {
+  const user = getUserFromRequest(req);
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
   const body = await req.json();
   const { id } = body;
 
