@@ -1,5 +1,5 @@
-// features/auth/authThunks.ts
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import { loginSuccess, loginFailure, registerSuccess, registerFailure, logout } from './authSlice';
 import { LoginCredentials, RegisterCredentials } from '@/types/userTypes';
 
@@ -9,22 +9,11 @@ export const loginUser = createAsyncThunk(
   'api/login',
   async (credentials: LoginCredentials, { dispatch }) => {
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      });
+      const response = await axios.post('/api/login', credentials);
+      const user = response.data.user;
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Login failed');
-      }
-
-      dispatch(loginSuccess(data.user));
-      return data.user;
+      dispatch(loginSuccess(user));
+      return user;
     } catch (error) {
       if (error instanceof Error) {
         dispatch(loginFailure(error.message));
@@ -36,26 +25,16 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+// Register user
 export const registerUser = createAsyncThunk(
   'api/signup',
   async (credentials: RegisterCredentials, { dispatch }) => {
     try {
-      const response = await fetch('/api/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      });
+      const response = await axios.post('/api/signup', credentials);
+      const user = response.data.user;
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Registration failed');
-      }
-
-      dispatch(registerSuccess(data.user));
-      return data.user;
+      dispatch(registerSuccess(user));
+      return user;
     } catch (error) {
       if (error instanceof Error) {
         dispatch(registerFailure(error.message));
@@ -66,19 +45,18 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+
 export const logoutUser = createAsyncThunk(
   'api/logout',
   async (_, { dispatch }) => {
     try {
-      const res = await fetch('/api/logout', {
-        method: 'POST',
-      });
+      const response = await axios.post('/api/logout');
 
-      if (!res.ok) {
+      if (response.status !== 200) {
         throw new Error('Logout failed');
       }
 
-      dispatch(logout()); // Reset auth state
+      dispatch(logout()); 
     } catch (error) {
       console.error('Logout error:', error);
       throw error;

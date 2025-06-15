@@ -4,10 +4,10 @@ import "./globals.css";
 import Header from "@/components/HeaderComponents/Header";
 import Main from "@/components/MainComponents/Main";
 import StoreProvider from "./StoreProvider";
-import { StickyNote } from "lucide-react";
 import styles from './page.module.css';
 import Greeting from "@/components/MainComponents/Greeting";
 import InitAuth from "./InitAuth";
+import FloatingNotesButton from "@/components/MainComponents/FloatingButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,13 +29,10 @@ export default function RootLayout({
           <Main>
             <main className={`font-sour-gummy ${styles.page}`}>
               <Greeting />
-              <InitAuth/>
+              <InitAuth />
               {children}
-              <button className={styles.floatingButton} title="Open Notes">
-                <StickyNote className={styles.icon} />
-              </button>
+              <FloatingNotesButton />
             </main>
-
           </Main>
         </StoreProvider>
       </body>

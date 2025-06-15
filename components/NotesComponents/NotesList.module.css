@@ -1,0 +1,169 @@
+.notesWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem 0;
+  background-color: #f5f1dd;
+  height: calc(81vh - 10rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.notesWrapper::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+.notesWrapper::-webkit-scrollbar-track {
+  background: #f5f1dd;
+}
+
+.notesWrapper::-webkit-scrollbar-thumb {
+  background: #caa776;
+  border-radius: 0.3rem;
+}
+
+.notesWrapper::-webkit-scrollbar-thumb:hover {
+  background: #a07850;
+}
+
+/* Firefox scrollbar */
+.notesWrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #caa776 #f5f1dd;
+}
+
+.noteCard {
+  width: 25rem;
+  height: 18rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #7a5c3e;
+}
+
+.noteHeader {
+  background-color: #f8cba8;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 2px solid #7a5c3e;
+  padding: 0.4rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.noteTitle {
+  color: #7a5c3e;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.editIcon {
+  padding: 2px;
+  width: 2rem;
+  height: 2rem;
+  color: #7a5c3e;
+  cursor: pointer;
+}
+
+.noteBody {
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+  flex: 1;
+}
+
+.noteFooter {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  color: #666;
+  text-align: right;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .noteCard {
+    width: 20rem;
+    height: 16rem;
+  }
+
+  .noteTitle {
+    font-size: 1rem;
+  }
+
+  .noteBody {
+    font-size: 1rem;
+  }
+
+  .noteFooter {
+    font-size: 0.875rem;
+  }
+
+  .editIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .notesWrapper {
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .noteCard {
+    width: 90%;
+    height: auto;
+  }
+
+  .noteHeader {
+    padding: 0.5rem;
+  }
+
+  .noteTitle {
+    font-size: 1rem;
+  }
+
+  .noteBody {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .noteFooter {
+    font-size: 0.75rem;
+  }
+
+  .editIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .noteCard {
+    width: 100%;
+    margin: 0 1rem;
+  }
+
+  .noteTitle {
+    font-size: 0.95rem;
+  }
+
+  .noteBody {
+    font-size: 0.95rem;
+  }
+
+  .noteFooter {
+    font-size: 0.7rem;
+  }
+
+  .editIcon {
+    width: 1rem;
+    height: 1rem;
+  }
+}

@@ -26,7 +26,7 @@ const HeaderClient = () => {
       <Link href="#" className="font-sour-gummy">
         About
       </Link>
-      <Link href="/notes" className="font-sour-gummy">
+      <Link href="#" className="font-sour-gummy">
         Notes
       </Link>
       <Link href="#" className="font-sour-gummy">
