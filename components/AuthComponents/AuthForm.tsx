@@ -55,11 +55,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
         setErrors({});
         router.push("/login");
       } else {
-        const errorMsg =
-          registerAction.payload?.message ||
-          registerAction.error?.message ||
-          "Signup failed.";
-        setErrors({ general: errorMsg });
+        setErrors({ general: "Signup failed." });
       }
     } else {
       const loginAction = await dispatch(
@@ -74,11 +70,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
         setErrors({});
         router.push("/");
       } else {
-        const errorMsg =
-          loginAction.payload?.message ||
-          loginAction.error?.message ||
-          "Login failed.";
-        setErrors({ general: errorMsg });
+        setErrors({ general: "Login failed." });
       }
     }
   };

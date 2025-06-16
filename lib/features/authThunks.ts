@@ -3,7 +3,9 @@ import axios, { AxiosError } from 'axios';
 import { loginSuccess, loginFailure, registerSuccess, registerFailure, logout } from './authSlice';
 import { LoginCredentials, RegisterCredentials } from '@/types/userTypes';
 
-
+interface ErrorResponse {
+  error: string;
+}
 
 export const loginUser = createAsyncThunk(
   'api/login',
@@ -15,7 +17,7 @@ export const loginUser = createAsyncThunk(
       dispatch(loginSuccess(user));
       return user;
     } catch (err) {
-      const error = err as AxiosError;
+      const error = err as AxiosError<ErrorResponse>;
       const message = error.response?.data?.error || error.message || 'An unknown error occurred';
       dispatch(loginFailure(message));
       throw new Error(message);
@@ -34,7 +36,7 @@ export const registerUser = createAsyncThunk(
       dispatch(registerSuccess(user));
       return user;
     } catch (err) {
-      const error = err as AxiosError;
+      const error = err as  AxiosError<ErrorResponse>;
       const message = error.response?.data?.error || error.message || 'An unknown error occurred';
       dispatch(registerFailure(message));
       throw new Error(message);
