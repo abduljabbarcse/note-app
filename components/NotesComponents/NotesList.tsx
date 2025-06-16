@@ -1,11 +1,11 @@
 "use client";
-import React from 'react';
-import styles from './NotesList.module.css';
-import { Note } from '@/types/noteTypes';
-import { Pencil } from 'lucide-react';
-import { useAppDispatch } from '@/lib/hooks';
-import { openEditModal } from '@/lib/features/modalSlice';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from "react";
+import styles from "./NotesList.module.css";
+import { Note } from "@/types/noteTypes";
+import { Pencil } from "lucide-react";
+import { useAppDispatch } from "@/lib/hooks";
+import { openEditModal } from "@/lib/features/modalSlice";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {
   notes: Note[];
@@ -23,9 +23,9 @@ export default function NotesList({ notes }: Props) {
         hidden: {},
         visible: {
           transition: {
-            staggerChildren: 0.1
-          }
-        }
+            staggerChildren: 0.1,
+          },
+        },
       }}
     >
       <AnimatePresence>
@@ -36,7 +36,7 @@ export default function NotesList({ notes }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <div className={styles.noteHeader}>
               <span className={styles.noteTitle}>{note.title}</span>
@@ -49,7 +49,7 @@ export default function NotesList({ notes }: Props) {
             </div>
             <div className={styles.noteBody}>{note.content}</div>
             <div className={styles.noteFooter}>
-              Last Modified: {new Date(note.updatedAt || '').toDateString()}
+              Last Modified: {new Date(note.updatedAt || "").toDateString()}
             </div>
           </motion.div>
         ))}

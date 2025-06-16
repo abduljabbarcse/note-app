@@ -81,6 +81,7 @@
   word-break: break-word;
   line-height: 1.4;
 }
+
 .noteBody::-webkit-scrollbar {
   width: 0.6rem;
 }
@@ -103,6 +104,7 @@
   scrollbar-width: thin;
   scrollbar-color: #caa776 #f5f1dd;
 }
+
 .noteFooter {
   padding: 0.5rem 0.75rem;
   font-size: 1rem;

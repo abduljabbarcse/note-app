@@ -1,5 +1,5 @@
-import styles from './Main.module.css';
-import PathBreadcrumb from './PathCrumb';
+import styles from "./Main.module.css";
+import PathBreadcrumb from "./PathCrumb";
 
 const Main = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (

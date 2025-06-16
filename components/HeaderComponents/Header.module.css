@@ -45,3 +45,18 @@
 .nav button:hover {
     color: #007c91;
 }
+@media (max-width: 480px) {
+  .header {
+    padding: 0.8rem 1rem; 
+  }
+
+  .logo {
+    font-size: 1.2rem; 
+  }
+
+  .nav a,
+  .nav button {
+    font-size: 0.9rem; 
+    padding: 0.3rem 0;
+  }
+}

@@ -44,3 +44,70 @@
   height: 2rem;
   color: white;
 }
+@media (max-width: 1024px) {
+  .mainBody {
+    padding: 2rem 4rem 1rem 4rem;
+  }
+
+  .pathText,
+  .pathSubText {
+    font-size: 1.1rem;
+  }
+
+  .floatingButton {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .icon {
+    width: 1.4rem;
+    height: 1.8rem;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .mainBody {
+    padding: 1.5rem 2rem 1rem 2rem;
+  }
+
+  .pathText,
+  .pathSubText {
+    font-size: 1rem;
+  }
+
+  .floatingButton {
+    width: 3.5rem;
+    height: 3.5rem;
+    bottom: 12px;
+    right: 12px;
+  }
+
+  .icon {
+    width: 1.2rem;
+    height: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainBody {
+    padding: 1rem 1rem 0.5rem 1rem;
+  }
+
+  .pathText,
+  .pathSubText {
+    font-size: 0.95rem;
+  }
+
+  .floatingButton {
+    width: 3rem;
+    height: 3rem;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .icon {
+    width: 1rem;
+    height: 1.4rem;
+  }
+}
