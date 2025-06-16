@@ -51,9 +51,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
       );
 
       if (registerUser.fulfilled.match(registerAction)) {
+        router.push("/login");
         dispatch(resetForm());
         setErrors({});
-        router.push("/login");
+        
       } else {
         setErrors({ general: "Signup failed." });
       }
