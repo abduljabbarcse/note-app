@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Notes App
 
-First, run the development server:
+A full-stack note-taking application built with **Next.js**, **Redux**, **Framer Motion**, and **Axios**, supporting user authentication, CRUD operations on notes, and a responsive UI optimized for all screen sizes.
+
+---
+![{263AC430-B6BD-4051-9129-CB30A589E1FE}](https://github.com/user-attachments/assets/3a9f6246-2645-4f74-b257-227e6c561716)
+![{30E10335-1000-4C33-8D31-11B95002FA9C}](https://github.com/user-attachments/assets/e87b3883-4679-42e7-8599-2dbd12ce2a5a)
+
+
+## 🚀 Live Demo
+
+[https://684fa0516d61cf00087ceb1d--notesflowabd.netlify.app/](https://684fa0516d61cf00087ceb1d--notesflowabd.netlify.app/)
+
+## 📦 Installation & Local Setup
+
+### Prerequisites
+
+* Node.js (v18+ recommended)
+* npm or yarn
+
+### Steps
 
 ```bash
+# Clone the repository
+git clone https://github.com/abduljabbarcse/notes-app.git
+cd notes-app
+
+# Install dependencies
+npm install
+# or
+yarn install
+
+# Run the development server
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App will be running at: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⚙️ Design Decisions & Trade-Offs
 
-To learn more about Next.js, take a look at the following resources:
+### 1. **Framework: Next.js**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Chosen for its hybrid static/server rendering, built-in routing, and excellent performance.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. **Redux for State Management**
 
-## Deploy on Vercel
+* Allows centralized control of notes and authentication states, making state predictable and easier to debug.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. **Authentication**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Auth uses cookies for secure session management and `localStorage` for persistence across sessions.
+* Route protection is handled using custom middleware for client-side and server-side safety.
+
+### 4. **Responsive Design**
+
+* Mobile-first design strategy.
+* Media queries handle layouts for common breakpoints (≤480px, ≤768px, ≤1024px).
+* Ensures usability across phones, tablets, and desktops.
+
+### 5. **Animations**
+
+* Framer Motion was integrated to add smooth UX transitions (modal popups, page transitions).
+
+### 6. **Async Thunks with Axios**
+
+* Axios replaces `fetch` for more advanced HTTP request handling (e.g., interceptors, global error handling).
+* Async thunks simplify Redux integration of API calls.
+
+### 7. **Persistence**
+
+* Notes and auth state are persisted across sessions using cookies + `localStorage`.
+
+---
+
+## 🧩 External Resources & Justifications
+
+| Resource                                        | Purpose          | Justification                                                                      |
+| ----------------------------------------------- | ---------------- | ---------------------------------------------------------------------------------- |
+| [Framer Motion](https://www.framer.com/motion/) | UI animations    | Lightweight and highly customizable animation library ideal for React/Next.js apps |
+| [Redux Toolkit](https://redux-toolkit.js.org/)  | State management | Simplifies Redux boilerplate and enhances developer experience                     |
+| [Axios](https://axios-http.com/)                | HTTP requests    | Offers better configuration, interceptors, and cleaner async API than fetch        |
+| [Google Fonts](https://fonts.google.com/)       | Typography       | Custom fonts improve visual identity and user experience                           |
+
+---
+
+## ✅ Features Summary
+
+* 🔐 **User Auth** – Signup, Login, Logout with session and route protection
+* 🗒️ **CRUD Notes** – Create, Read, Update, Delete using modals
+* 📱 **Responsive UI** – Mobile-first design with breakpoints for tablets and desktops
+* 🎨 **Animations** – Modal and UI transitions with Framer Motion
+* 🧠 **State Management** – Global Redux store with persistence
+* 🌐 **API Integration** – Axios-based endpoints for all data actions
+
+---
+
+## 🧪 Future Improvements
+
+* Add tags and search functionality for notes
+* Optimize backend for scalability
+* Improve accessibility (ARIA roles, keyboard nav)
+* Add dark mode toggle
+
+---
